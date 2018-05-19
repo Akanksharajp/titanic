@@ -7,22 +7,25 @@ import pandasql as pdsql
 
 from pandasql import sqldf
 
-
+#Keep good names for your variables lady
 data=pd.read_csv('C:/Analytics/dataset/data_science_challenge_samp_18.csv')
 data2=pd.read_csv('C:/Analytics/dataset/data_science_challenge_samp_18.csv')
 
 data2['order_date']=pd.to_datetime(data2['order_date'])
 data2['yyyy_w']=data2['order_date'].apply(lambda x: str(x.isocalendar()[0])+'-'+str(x.isocalendar()[1]))
 
+#here as well
 q1 ="select cust_id,yyyy_w,sum(units_purchased)as total_purchased,sum(total_spend)as total_spent from data2 group by cust_id,yyyy_w;"
 f1=pdsql.sqldf(q1)
 #print(f1)
 cats = ['a', 'b', 'c']
 df4 = pd.DataFrame({'cat': ['a', 'b', 'a']})
 
+#use some methods please instead of a whole thing
 dummies = pd.get_dummies(df4, prefix='', prefix_sep='')
 dummies = dummies.T.reindex(cats).T.fillna(0)
 
+#try to create contants
 lane=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
 print("")
 dummies=pd.get_dummies(data['lane_number'],prefix='', prefix_sep='')
